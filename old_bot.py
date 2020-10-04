@@ -4,7 +4,8 @@ import requests
 import math
 from datetime import datetime
 
-TOKEN = '1282831437:AAHf0gt__4iWrAznK6fUpZWpx2qEBUTYPTI'
+TOKEN = ''
+weatherToken = ''
 bot = telebot.TeleBot(TOKEN)
 ids = [394172707] #, 851548030,  430646417, 231315799]
 
@@ -21,7 +22,7 @@ def get_eur_to_rub():
     return eur_to_rub
 
 def get_weather():
-    url = 'http://api.openweathermap.org/data/2.5/onecall?lat=53.235356&lon=34.354699&appid=a294e0969a309d0adb60b3d2d55916af&lang=ru&units=metric&exclude=minutely,daily,current'
+    url = а'http://api.openweathermap.org/data/2.5/onecall?lat=53.235356&lon=34.354699&appid={weatherToken}&lang=ru&units=metric&exclude=minutely,daily,current'
     request = requests.get(url)
     weather = json.loads(request.text)
     hourly = weather.get('hourly')
