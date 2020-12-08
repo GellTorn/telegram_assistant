@@ -1,0 +1,27 @@
+{
+  "name": "telegram_assistant",
+  "version": "1.0.0",
+  "description": ":D",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GellTorn/telegram_assistant.git"
+  },
+  "keywords": [
+    "telegram",
+    "javascript"
+  ],
+  "author": "GellTorn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GellTorn/telegram_assistant/issues"
+  },
+  "homepage": "https://github.com/GellTorn/telegram_assistant#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "telebot": "^1.4.1"
+  }
+}
