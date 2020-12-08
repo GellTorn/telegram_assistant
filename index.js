@@ -4,12 +4,12 @@ const CurrencyRate = require("./src/currencyRate");
 const env = process.env;
 
 async function main() {
-  const currency = new CurrencyRate();
-  await currency.update();
-  console.log(CurrencyRate, currency.usd, currency.eur, currency.rub);
+  //const currency = new CurrencyRate();
+  //await currency.update();
+  //console.log(CurrencyRate, currency.usd, currency.eur, currency.rub);
 
   const bot = new TeleBot({
-    token: "1282831437:AAHf0gt__4iWrAznK6fUpZWpx2qEBUTYPTI", // Required. Telegram Bot API token.
+    token: env.TELEGRAM_TOKEN, // Required. Telegram Bot API token.
     polling: {
       // Optional. Use polling.
       interval: 1000, // Optional. How often check updates (in ms).
@@ -20,15 +20,16 @@ async function main() {
     allowedUpdates: [], // Optional. List the types of updates you want your bot to receive. Specify an empty list to receive all updates.
   });
 
-  bot.on(["/start", "/hello"], newUser);
+  bot.on(["/start", "/hello"], start);
 
   bot.start();
+  console.log();
+
+  function start(msg) {
+    // add user to db
+
+    msg.reply.text(`Welcome ${msg.from.first_name} ${msg.from.last_name}!`);
+  }
 }
 
 main();
-
-function newUser(msg) {
-  // add user to db
-
-  msg.reply.text("Welcome!");
-}
