@@ -1,8 +1,22 @@
 const fetch = require("node-fetch");
 
 class WeatherAPI {
-  constructor() {}
+  constructor() {
+    this._weatherToken = "";
+  }
 
+  getWeather(lat, lon) {
+    const url = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${this._weatherToken}&lang=ru&units=metric&exclude=minutely,daily,current`;
+    const response = await fetch(url);
+
+    if (response.ok) {
+      const json = await response.json();
+
+      return json;
+    } else {
+      throw new Error("Ошибка HTTP: " + response.status);
+    }
+  }
   /* 
 	def get_weather():
     url = а'http://api.openweathermap.org/data/2.5/onecall?lat=53.235356&lon=34.354699&appid={weatherToken}&lang=ru&units=metric&exclude=minutely,daily,current'
